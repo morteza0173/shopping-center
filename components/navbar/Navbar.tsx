@@ -1,9 +1,7 @@
 import Container from "../global/Container";
-import { Separator } from "../ui/separator";
-import CartButton from "./CartButton";
-import DarkMode from "./DarkMode";
+
 import { DockNavbar } from "./DockNavbar";
-import LinkDropdown from "./LinkDropdown";
+
 import Logo from "./Logo";
 import NavSearch from "./NavSearch";
 function Navbar() {

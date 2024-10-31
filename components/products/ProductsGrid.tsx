@@ -10,7 +10,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       {products.map((product) => {
-        const { name, id, price, description, short_description, images } =
+        const { name, id, price, images } =
           product;
         const firstImage = images[0].src;
         return (

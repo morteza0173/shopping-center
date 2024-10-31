@@ -19,7 +19,7 @@ function ProductsCurousel({ products }: { products: featuredProduct[] }) {
     <Carousel dir="rtl">
       <CarouselContent className="mx-10">
         {products.map((product) => {
-          const { id, name, price, description, short_description, images } =
+          const { id, name, price, images } =
             product;
 
           const firstImage = images[0].src;
