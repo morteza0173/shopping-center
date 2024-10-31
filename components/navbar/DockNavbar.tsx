@@ -10,9 +10,9 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export function DockNavbar() {
   return (
-    <div className="relative mb-6">
+    <div className="relative md:mb-6">
       <Dock direction="middle" className="px-6">
-        <DockIcon >
+        <DockIcon>
           <DarkMode />
         </DockIcon>
         <DockIcon>

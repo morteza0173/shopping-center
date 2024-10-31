@@ -19,8 +19,7 @@ function ProductsCurousel({ products }: { products: featuredProduct[] }) {
     <Carousel dir="rtl">
       <CarouselContent className="mx-10">
         {products.map((product) => {
-          const { id, name, price, images } =
-            product;
+          const { id, name, price, images } = product;
 
           const firstImage = images[0].src;
 
@@ -28,7 +27,7 @@ function ProductsCurousel({ products }: { products: featuredProduct[] }) {
             <CarouselItem key={id} className="md:basis-1/3 lg:basis-1/4">
               <div className="p-1 group relative">
                 <Link href={`/products/${id}`}>
-                  <Card className="my-8 transform group-hover:shadow-xl transition-shadow duration-300 h-80">
+                  <Card className="my-8 transform group-hover:shadow-xl transition-shadow duration-300 md:h-80">
                     <CardContent>
                       <div className="relative h-64 md:h-48 rounded mt-4">
                         <Image
