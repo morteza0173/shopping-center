@@ -3,7 +3,13 @@
 import type { PropsWithChildren } from "react";
 import React, { useRef } from "react";
 import { type VariantProps, cva } from "class-variance-authority";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  MotionValue,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 import { ny } from "@/lib/utils";
 
@@ -74,14 +80,13 @@ export interface DockIconProps {
   size?: number;
   magnification?: number;
   distance?: number;
-  mouseX?: any;
+  mouseX?: MotionValue<number>;
   className?: string;
   children?: React.ReactNode;
   props?: PropsWithChildren;
 }
 
 function DockIcon({
-  size,
   magnification = DEFAULT_MAGNIFICATION,
   distance = DEFAULT_DISTANCE,
   mouseX,
@@ -91,11 +96,15 @@ function DockIcon({
 }: DockIconProps) {
   const ref = useRef<HTMLDivElement>(null);
 
-  const distanceCalc = useTransform(mouseX, (val: number) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
 
-    return val - bounds.x - bounds.width / 2;
-  });
+  const distanceCalc = useTransform(
+    mouseX as MotionValue<number>,
+    (val: number) => {
+      const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+
+      return val - bounds.x - bounds.width / 2;
+    }
+  );
 
   const widthSync = useTransform(
     distanceCalc,

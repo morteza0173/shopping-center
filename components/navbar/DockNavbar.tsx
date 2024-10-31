@@ -12,7 +12,7 @@ export function DockNavbar() {
   return (
     <div className="relative mb-6">
       <Dock direction="middle" className="px-6">
-        <DockIcon>
+        <DockIcon >
           <DarkMode />
         </DockIcon>
         <DockIcon>
