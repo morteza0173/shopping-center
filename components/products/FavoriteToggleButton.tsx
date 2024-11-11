@@ -2,8 +2,6 @@ import { FaHeart } from "react-icons/fa";
 import { Button } from "../ui/button";
 
 function FavoriteToggleButton({ productId }: { productId: string }) {
-  console.log(productId);
-
   return (
     <Button
       size="icon"

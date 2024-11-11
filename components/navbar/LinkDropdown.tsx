@@ -21,7 +21,7 @@ function LinkDropdown() {
   //get user data
   const [image, setImage] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  let token = localStorage.getItem("token");
+  const [token, setToken] = useState<string | null>(null);
 
   const router = useRouter();
   const { toast } = useToast();
@@ -29,7 +29,7 @@ function LinkDropdown() {
     localStorage.removeItem("token");
     Cookies.remove("token");
     router.refresh();
-    token = "";
+    setToken(null);
     setIsAdmin(false);
     setImage("");
 
@@ -39,8 +39,10 @@ function LinkDropdown() {
   };
 
   useEffect(() => {
+    const savedToken = localStorage.getItem("token");
+    setToken(savedToken);
     async function getUserIcon() {
-      if (token) {
+      if (savedToken) {
         const user = await checkUser();
         if (user) {
           const userImage = user?.avatar_urls?.["96"];

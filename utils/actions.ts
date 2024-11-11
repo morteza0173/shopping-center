@@ -47,7 +47,7 @@ export const fetchAllProducts = async (
   if (perpage) {
     params.per_page = perpage;
   }
-  console.log(params);
+
 
   try {
     const products = await customAxios.get("wc/v3/products", {

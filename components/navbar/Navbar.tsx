@@ -1,7 +1,6 @@
+
 import { Suspense } from "react";
 import Container from "../global/Container";
-
-import { DockNavbar } from "./DockNavbar";
 
 import Logo from "./Logo";
 import NavSearch from "./NavSearch";
@@ -22,7 +21,6 @@ function Navbar() {
           <CartButton />
           <Separator orientation="vertical" className="h-10" />
           <LinkDropdown />
-          {/* <DockNavbar /> */}
         </section>
       </Container>
     </nav>
