@@ -49,4 +49,5 @@ export interface LoginResponse {
 export interface checkUserType {
   roles: string[];
   avatar_urls: string[];
+  username: string;
 }

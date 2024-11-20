@@ -16,12 +16,15 @@ import { Separator } from "../ui/separator";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useToast } from "../hooks/use-toast";
+import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
 
 function LinkDropdown() {
   //get user data
   const [image, setImage] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [token, setToken] = useState<string | null>(null);
+  const [username, setUsername] = useState("کاربر");
+  const [userFetch, setUserFetch] = useState("");
 
   const router = useRouter();
   const { toast } = useToast();
@@ -49,6 +52,10 @@ function LinkDropdown() {
           setImage(userImage);
           const userRole = user?.roles?.includes("administrator");
           setIsAdmin(userRole);
+
+          const userName = user?.username;
+          setUserFetch(userName);
+          setUsername(userName);
         }
       }
     }
@@ -69,34 +76,58 @@ function LinkDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className="w-48" sideOffset={10}>
-        {token
-          ? userlinks.map((link) => {
+        {token && (
+          <>
+            <DropdownMenuLabel className="font-semibold text-xs p-2 text-center">
+              خوش امدید ، {username}
+            </DropdownMenuLabel>
+            <Separator className="m-1" />
+          </>
+        )}
+        {token ? (
+          <>
+            {userlinks.map((link) => {
               return (
                 <DropdownMenuItem key={link.href} className="p-2">
-                  <Link href={link.href}>{link.label}</Link>
-                </DropdownMenuItem>
-              );
-            })
-          : links.map((link) => {
-              return (
-                <DropdownMenuItem key={link.href} className="p-2">
-                  <Link href={link.href}>{link.label}</Link>
+                  <Link href={link.href} className="w-full text-start">
+                    {link.label}
+                  </Link>
                 </DropdownMenuItem>
               );
             })}
-        {isAdmin && (
-          <>
             <Separator className="m-1" />
-
-            <DropdownMenuItem className="p-2">
-              <Link href={"/dashboard"}>مدیریت فروشگاه</Link>
-            </DropdownMenuItem>
+            {userFetch && !isAdmin && (
+              <DropdownMenuItem>
+                <Link href={"#"} className="w-full text-start">
+                  پروفایل کاربری
+                </Link>
+              </DropdownMenuItem>
+            )}
           </>
+        ) : (
+          links.map((link) => {
+            return (
+              <DropdownMenuItem key={link.href} className="p-2">
+                <Link href={link.href} className="w-full text-start">
+                  {link.label}
+                </Link>
+              </DropdownMenuItem>
+            );
+          })
+        )}
+        {isAdmin && (
+          <DropdownMenuItem className="p-2">
+            <Link href={"/dashboard"} className="w-full text-start">
+              مدیریت فروشگاه
+            </Link>
+          </DropdownMenuItem>
         )}
         {token && (
           <>
             <DropdownMenuItem className="p-2">
-              <button onClick={logoutHandler}>خروج</button>
+              <button onClick={logoutHandler} className="w-full text-start">
+                خروج
+              </button>
             </DropdownMenuItem>
           </>
         )}
