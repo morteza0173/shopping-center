@@ -76,7 +76,7 @@ function SingleProductCarousel({ product }: { product: Product }) {
             })}
           </CarouselContent>
         </Carousel>
-      </div>
+      </div>  
 
       {/* Thumbnail Carousel */}
       <div className="flex justify-center w-full mt-32">
