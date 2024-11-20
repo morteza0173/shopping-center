@@ -13,18 +13,18 @@ function ProductDetailsTab({ product }: { product: Product }) {
   return (
     <Tabs
       dir="rtl"
-      orientation="vertical"
+      orientation="horizontal"
       defaultValue="introduction"
-      className="flex w-full h-full mt-12"
+      className="w-full"
     >
-      <TabsList className="grid grid-rows-3 h-36 mt-4">
-        <TabsTrigger value="introduction" className="text-xs md:text-sm">
+      <TabsList className="flex justify-start mt-4">
+        <TabsTrigger value="introduction" className="w-28 text-xs md:text-sm">
           معرفی
         </TabsTrigger>
-        <TabsTrigger value="Specifications" className="text-xs md:text-sm">
+        <TabsTrigger value="Specifications" className="w-28 text-xs md:text-sm">
           مشخصات
         </TabsTrigger>
-        <TabsTrigger value="comments" className="text-xs md:text-sm">
+        <TabsTrigger value="comments" className="w-28 text-xs md:text-sm">
           دیدگاه ها
         </TabsTrigger>
       </TabsList>
