@@ -17,8 +17,10 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useToast } from "../hooks/use-toast";
 import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
+import { useGlobalContext } from "@/app/GloabalContext";
 
 function LinkDropdown() {
+  const { setLoggedIn } = useGlobalContext();
   //get user data
   const [image, setImage] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -35,7 +37,7 @@ function LinkDropdown() {
     setToken(null);
     setIsAdmin(false);
     setImage("");
-
+    setLoggedIn(false);
     toast({
       description: "شما با موفقیت خارج شدید.",
     });
@@ -56,6 +58,7 @@ function LinkDropdown() {
           const userName = user?.username;
           setUserFetch(userName);
           setUsername(userName);
+          setLoggedIn(true);
         }
       }
     }
