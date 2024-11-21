@@ -12,7 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-function favoritePage() {
+function FavoritePage() {
   const { favorites } = useGlobalContext();
   const [products, setProducts] = useState<wishList[]>([]);
   const [productFetched, setProductFetched] = useState(false);
@@ -92,4 +92,4 @@ function favoritePage() {
     </div>
   );
 }
-export default favoritePage;
+export default FavoritePage;
