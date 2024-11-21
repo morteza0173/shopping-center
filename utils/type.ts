@@ -22,7 +22,6 @@ export interface Product {
   id: number;
   name: string;
   price: number;
-
   description: string;
   short_description: string;
   categories: categories[];
@@ -50,4 +49,20 @@ export interface checkUserType {
   roles: string[];
   avatar_urls: string[];
   username: string;
+}
+
+export interface checkWishlist {
+  is_in_wishlist: boolean;
+}
+export interface addWishList {
+  message: string;
+}
+export interface wishList {
+  id: number;
+  name: string;
+  price: string;
+  image: string;
+}
+export interface fetchWishList {
+  wishlist: wishList[];
 }

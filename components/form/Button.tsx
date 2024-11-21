@@ -10,7 +10,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../ui/drawer";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import LoginPage from "@/app/(login)/login/page";
 
 type btnSize = "default" | "lg" | "sm";
@@ -55,7 +55,6 @@ export const CardSignInButton = () => {
           type="button"
           size="icon"
           className="p-2 cursor-pointer w-8 h-8"
-          asChild
         >
           <FaRegHeart className="w-4 h-4" />
         </Button>
@@ -67,5 +66,25 @@ export const CardSignInButton = () => {
         <LoginPage />
       </DrawerContent>
     </Drawer>
+  );
+};
+
+export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
+  const { pending } = useFormStatus();
+  return (
+    <Button
+      type="submit"
+      size="icon"
+      variant="outline"
+      className="p-2 cursor-pointer w-8 h-8"
+    >
+      {pending ? (
+        <ReloadIcon className="animate-spin" />
+      ) : isFavorite ? (
+        <FaHeart className="w-4 h-4" />
+      ) : (
+        <FaRegHeart className="w-4 h-4" />
+      )}
+    </Button>
   );
 };

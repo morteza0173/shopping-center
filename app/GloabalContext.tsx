@@ -5,6 +5,8 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface GlobalContextType {
   loggedIn: boolean;
   setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  favorites: Record<string, boolean>;
+  setFavorite: (productId: string, isFavorite: boolean) => void;
 }
 
 // مقدار اولیه (Default Value)
@@ -13,9 +15,19 @@ const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 // ایجاد Provider
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [favorites, setFavorites] = useState<Record<string, boolean>>({});
+
+    const setFavorite = (productId: string, isFavorite: boolean) => {
+      setFavorites((prev) => ({
+        ...prev,
+        [productId]: isFavorite,
+      }));
+    };
 
   return (
-    <GlobalContext.Provider value={{ loggedIn, setLoggedIn }}>
+    <GlobalContext.Provider
+      value={{ loggedIn, setLoggedIn, favorites, setFavorite }}
+    >
       {children}
     </GlobalContext.Provider>
   );
