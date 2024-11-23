@@ -18,7 +18,7 @@ function Navbar() {
         <section className="flex sm:gap-4 h-5 md:ml-10">
           <DarkMode />
           <CartButton />
-          <Separator orientation="vertical" className="h-10" />
+          <Separator orientation="vertical" className="hidden sm:block h-10" />
           <LinkDropdown />
         </section>
       </Container>
