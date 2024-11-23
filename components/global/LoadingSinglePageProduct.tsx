@@ -10,8 +10,8 @@ function LoadingSingleProduct() {
       <Separator className="mt-8" />
       <div className="mt-8 grid gap-y-8 lg:grid-cols-5 lg:gap-x-4  justify-center">
         {/* Image */}
-        <div className="col-span-2">
-          <div className="w-full flex justify-center items-center h-72">
+        <div className="lg:col-span-2">
+          <div className="w-screen lg:w-full flex justify-center items-center h-72">
             <Card className="w-10/12 h-72">
               <CardContent className="w-full h-full flex items-center justify-center">
                 <Skeleton className="w-full h-full object-cover mt-4 rounded" />

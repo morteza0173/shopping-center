@@ -14,8 +14,6 @@ import { formatCurrency } from "@/utils/format";
 import { categories } from "@/utils/type";
 import { Suspense } from "react";
 
-
-
 async function SingleProductPageDetail({ paramsId }: { paramsId: string }) {
   const fetchProduct = await fetchSingleProduct(paramsId);
 
@@ -32,11 +30,11 @@ async function SingleProductPageDetail({ paramsId }: { paramsId: string }) {
           <Separator className="mt-8" />
           <div className="mt-8 grid gap-y-8 lg:grid-cols-5 lg:gap-x-4  justify-center">
             {/* Image */}
-            <div className="col-span-2">
+            <div className="lg:col-span-2">
               <SingleProductCarousel product={product} />
             </div>
             {/* product Info */}
-            <div className="col-span-3">
+            <div className="lg:col-span-3">
               <div className="flex gap-x-8 items-center">
                 <h1 className="capitalize text-xl font-bold">{name}</h1>
                 <FavoriteToggleButton productId={String(id)} />

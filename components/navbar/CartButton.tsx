@@ -9,7 +9,7 @@ async function CartButton() {
       variant="outline"
       asChild
       size="icon"
-      className="relative flex justify-center items-center"
+      className="relative hidden sm:flex justify-center items-center "
     >
       <Link href="/cart">
         <LuShoppingBasket />

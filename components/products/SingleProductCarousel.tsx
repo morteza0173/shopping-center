@@ -52,10 +52,69 @@ function SingleProductCarousel({ product }: { product: Product }) {
 
   const { images, name } = product;
   return (
-    <>
+    // <>
+    //   {/* Main Carousel */}
+    //   <div className="w-full flex justify-center items-center h-72">
+    //     <Carousel className="w-10/12 h-72" setApi={setMainApi}>
+    //       <CarouselContent>
+    //         {images.map((image, index) => {
+    //           return (
+    //             <CarouselItem key={index}>
+    //               <Card>
+    //                 <CardContent className="w-full h-full flex items-center justify-center">
+    //                   <Image
+    //                     src={image.src}
+    //                     alt={name}
+    //                     width={150}
+    //                     height={150}
+    //                     className="w-full h-full object-cover mt-4 rounded"
+    //                   />
+    //                 </CardContent>
+    //               </Card>
+    //             </CarouselItem>
+    //           );
+    //         })}
+    //       </CarouselContent>
+    //     </Carousel>
+    //   </div>
+
+    //   {/* Thumbnail Carousel */}
+    //   <div className="flex justify-center w-full ">
+    //     <Carousel className="w-10/12" setApi={setThumbnailApi}>
+    //       <CarouselContent>
+    //         {images.map((image, index) => {
+    //           return (
+    //             <CarouselItem
+    //               key={index}
+    //               className={`basis-1/3 cursor-pointer`}
+    //               onClick={() => handleThumbnailClick(index)}
+    //             >
+    //               <Card className="w-full h-full flex items-center justify-center">
+    //                 <CardContent
+    //                   className={`flex items-center justify-center  p-1 w-full h-full ${
+    //                     currentIndex === index ? "border border-blue-500" : ""
+    //                   } `}
+    //                 >
+    //                   <img
+    //                     src={image.src}
+    //                     alt={name}
+    //                     className=" object-cover rounded"
+    //                   />
+    //                 </CardContent>
+    //               </Card>
+    //             </CarouselItem>
+    //           );
+    //         })}
+    //       </CarouselContent>
+    //       <CarouselPrevious />
+    //       <CarouselNext />
+    //     </Carousel>
+    //   </div>
+    // </>
+    <div className="space-y-4">
       {/* Main Carousel */}
-      <div className="w-full flex justify-center items-center h-72">
-        <Carousel className="w-10/12 h-72" setApi={setMainApi}>
+      <div className="w-full flex justify-center items-center">
+        <Carousel className="w-10/12" setApi={setMainApi}>
           <CarouselContent>
             {images.map((image, index) => {
               return (
@@ -67,7 +126,7 @@ function SingleProductCarousel({ product }: { product: Product }) {
                         alt={name}
                         width={150}
                         height={150}
-                        className="w-full h-full object-cover mt-4 rounded"
+                        className="w-full h-full object-cover rounded"
                       />
                     </CardContent>
                   </Card>
@@ -76,29 +135,29 @@ function SingleProductCarousel({ product }: { product: Product }) {
             })}
           </CarouselContent>
         </Carousel>
-      </div>  
+      </div>
 
       {/* Thumbnail Carousel */}
-      <div className="flex justify-center w-full mt-32">
-        <Carousel className="w-10/12" setApi={setThumbnailApi}>
+      <div className="w-full flex justify-center">
+        <Carousel className="w-9/12" setApi={setThumbnailApi}>
           <CarouselContent>
             {images.map((image, index) => {
               return (
                 <CarouselItem
                   key={index}
-                  className={`basis-1/3 cursor-pointer`}
+                  className="basis-1/3 cursor-pointer"
                   onClick={() => handleThumbnailClick(index)}
                 >
                   <Card className="w-full h-full flex items-center justify-center">
                     <CardContent
-                      className={`flex items-center justify-center  p-1 w-full h-full ${
+                      className={`flex items-center justify-center p-1 w-full h-full ${
                         currentIndex === index ? "border border-blue-500" : ""
-                      } `}
+                      }`}
                     >
                       <img
                         src={image.src}
                         alt={name}
-                        className=" object-cover rounded"
+                        className="object-cover rounded"
                       />
                     </CardContent>
                   </Card>
@@ -110,7 +169,7 @@ function SingleProductCarousel({ product }: { product: Product }) {
           <CarouselNext />
         </Carousel>
       </div>
-    </>
+    </div>
   );
 }
 

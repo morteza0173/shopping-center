@@ -32,8 +32,8 @@ function NavSearch() {
   return (
     <Input
       type="search"
-      placeholder="جستجوی محصولات ..."
-      className="max-w-xs dark:bg-muted"
+      placeholder="جستجو ..."
+      className="max-w-xs mt-5 dark:bg-muted w-36 sm:w-48 md:w-60 lg:w-80"
       value={search}
       onChange={(e) => {
         setSearch(e.target.value);
