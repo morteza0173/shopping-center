@@ -66,3 +66,8 @@ export interface wishList {
 export interface fetchWishList {
   wishlist: wishList[];
 }
+
+
+export interface AddToCartResponse {
+  data: string;
+}

@@ -1,5 +1,6 @@
 import customAxios from "./customAxios";
 import {
+  AddToCartResponse,
   categories,
   checkUserType,
   featuredProduct,
@@ -10,8 +11,11 @@ import { loginSchema } from "./zodSchema";
 import { z } from "zod";
 import { toast } from "@/components/hooks/use-toast";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 //fetch featured products and used in ProductsCurousel.tsx
+
+const Url: string | undefined = process.env.WORLDPRESS_URL;
 
 export const fetchFeaturedProducts = async (
   perpage?: number
@@ -47,7 +51,6 @@ export const fetchAllProducts = async (
   if (perpage) {
     params.per_page = perpage;
   }
-
 
   try {
     const products = await customAxios.get("wc/v3/products", {
@@ -119,5 +122,45 @@ export const fetchAllCategories = async (): Promise<
   } catch (error) {
     console.log(error);
     return undefined;
+  }
+};
+
+export const postAddToCart = async ({
+  productId,
+  quantity,
+}: {
+  productId: string;
+  quantity: string;
+}) => {
+  const params = new URLSearchParams();
+  params.append("product_id", productId);
+  params.append("quantity", quantity);
+
+  try {
+    const response = await axios.post<AddToCartResponse>(
+      `https://mobiroid.ir/?wc-ajax=add_to_cart`,
+      params,
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+    // کد برای درخواست سبد خرید
+    // const response = await axios.post<AddToCartResponse>(
+    //   `https://mobiroid.ir/?wc-ajax=get_refreshed_fragments`,
+    //   params,
+    //   {
+    //     withCredentials: true,
+    //     headers: {
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //     },
+    //   }
+    // );
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
   }
 };
