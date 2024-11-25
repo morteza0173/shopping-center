@@ -133,18 +133,15 @@ export const postAddToCart = async ({
   quantity: string;
 }) => {
   const params = new URLSearchParams();
-  params.append("product_id", productId);
+  params.append("id", productId);
   params.append("quantity", quantity);
 
   try {
     const response = await axios.post<AddToCartResponse>(
-      `https://mobiroid.ir/?wc-ajax=add_to_cart`,
+      `https://mobiroid.ir/wp-json/cocart/v2/cart/add-item`,
       params,
       {
         withCredentials: true,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
       }
     );
     // کد برای درخواست سبد خرید
